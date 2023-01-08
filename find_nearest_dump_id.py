@@ -7,8 +7,16 @@ DUMP_ID = 'DUMP_ID'
 GPSNORTHING = 'GPSNORTHING'
 GPSEASTING = 'GPSEASTING'
 
-# Staring Coords
-starting_coordinates = [(57326.6, 225337.3), (47.7, -122.4), (47.8, -122.5)]
+
+starting_coordinates = []
+
+
+with open('random_rows.csv', 'r') as file_object:
+    reader = csv.DictReader(file_object)
+    for row in reader:
+        starting_northing = float(row["GPSNORTHING"])
+        starting_easting = float(row["GPSEASTING"])
+        starting_coordinates.append((starting_northing, starting_easting))
 
 dump_id_coords = {}
 distances = {}
