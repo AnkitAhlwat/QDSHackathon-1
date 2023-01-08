@@ -41,12 +41,12 @@ for shovel_id, shovel_coords in shovel_id_coords.items():
         # Calculate the distance between the shovel ID and dump ID coordinates using the Pythagorean theorem
         distance_units = math.sqrt((shovel_coords[0] - dump_coords[0])**2 + (shovel_coords[1] - dump_coords[1])**2)
         # Print the result
-        distance[(shovel_id, dump_id)] = round(distance_units/1000, 2)
+        distance[f'From {shovel_id} to {dump_id}'] = round(distance_units/1000, 2)
 
 
 # Convert the location_data dictionary to a Pandas DataFrame
 distance_df = pd.DataFrame.from_dict(distance, orient='index')
 
 # Write the location_df DataFrame to a CSV file
-distance_df.to_csv('distance.csv', index=False)
+distance_df.to_csv('distance.csv', index=True)
 print(distance_df)
